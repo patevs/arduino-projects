@@ -65,7 +65,7 @@ void loop() {
     // (note: line 1 is the second row, since counting begins with 0):
     lcd.setCursor(0, 1);
     // print the number of seconds since reset:
-    // lcd.print(millis() / 1000);
+    lcd.print(millis() / 1000);
     // Delay between measurements.
     delay(delayMS);
     // Get temperature event and print its value.
@@ -86,7 +86,7 @@ void loop() {
     // Get humidity event and print its value.
     dht.humidity().getEvent(&event);
     if (isnan(event.relative_humidity)) {
-        Serial.println(F("  Error reading humidity!"));
+        Serial.println(F(" Error reading humidity!"));
     }
     else {
         Serial.print(F("  Humidity: "));
