@@ -74,8 +74,9 @@ void loop() {
     }
     else {
         // print temp to lcd
-        lcd.print(" TEMP:   ");
+        lcd.print(" Temp: ");
         lcd.print(event.temperature);
+        lcd.print( (char)223);
         lcd.print("C");
         // print temp to serial out
         Serial.print(F("  Temperature: "));
