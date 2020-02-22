@@ -26,10 +26,8 @@ uint32_t delayMS;
 
 void setup() {
     Serial.begin(9600);
-    // set up the LCD's number of columns and rows:
+    // Initialize the LCD's number of columns and rows:
     lcd.begin(16, 2);
-    // Print a message to the LCD.
-    // lcd.print("hello, world!");
     // Initialize dht sensor.
     dht.begin();
     Serial.println("");
@@ -63,7 +61,7 @@ void setup() {
 void loop() {
     // set the cursor to column 0, line 1
     // (note: line 1 is the second row, since counting begins with 0):
-    lcd.setCursor(0, 1);
+    lcd.setCursor(0, 0);
     // print the number of seconds since reset:
     // lcd.print(millis() / 1000);
     // Delay between measurements.
