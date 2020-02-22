@@ -59,7 +59,7 @@ void setup() {
 }
 
 void loop() {
-    // set the cursor to column 0, line 1
+    // set the cursor to column 0, line 0
     // (note: line 1 is the second row, since counting begins with 0):
     lcd.setCursor(0, 0);
     // print the number of seconds since reset:
@@ -84,10 +84,18 @@ void loop() {
     }
     // Get humidity event and print its value.
     dht.humidity().getEvent(&event);
+    // set the cursor to column 0, line 0
+    // (note: line 1 is the second row, since counting begins with 0):
+    lcd.setCursor(0, 1);
     if (isnan(event.relative_humidity)) {
         Serial.println(F(" Error reading humidity!"));
     }
     else {
+        // print humidity to lcd
+        lcd.print("Humidity: ");
+        lcd.print(event.relative_humidity);
+        lcd.print("%");
+        // print humidity to lcd
         Serial.print(F("  Humidity: "));
         Serial.print(event.relative_humidity);
         Serial.println(F("%"));
