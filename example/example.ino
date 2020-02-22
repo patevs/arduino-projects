@@ -92,9 +92,12 @@ void loop() {
         Serial.println(F(" Error reading humidity!"));
     }
     else {
+        // get humidity
+        int hum = event.relative_humidity;
         // print humidity to lcd
         lcd.print(" R.H.: ");
-        lcd.print(event.relative_humidity);
+        lcd.print(hum);
+        // lcd.print(event.relative_humidity);
         lcd.print(" %");
         // print humidity to serial out
         Serial.print(F("  Humidity: "));
