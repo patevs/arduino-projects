@@ -84,8 +84,7 @@ void loop() {
     }
     // Get humidity event and print its value.
     dht.humidity().getEvent(&event);
-    // set the cursor to column 0, line 0
-    // (note: line 1 is the second row, since counting begins with 0):
+    // set the cursor to column 0, line 1
     lcd.setCursor(0, 1);
     if (isnan(event.relative_humidity)) {
         Serial.println(F(" Error reading humidity!"));
