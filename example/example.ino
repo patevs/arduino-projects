@@ -74,9 +74,9 @@ void loop() {
     }
     else {
         // print temp to lcd
-        lcd.print("Temp:     ");
+        lcd.print("Temp:   ");
         lcd.print(event.temperature);
-        lcd.print("C");
+        lcd.print(" C");
         // print temp to serial out
         Serial.print(F("  Temperature: "));
         Serial.print(event.temperature);
@@ -92,7 +92,7 @@ void loop() {
     }
     else {
         // print humidity to lcd
-        lcd.print("Humidity: ");
+        lcd.print("RH:    ");
         lcd.print(event.relative_humidity);
         lcd.print("%");
         // print humidity to lcd
