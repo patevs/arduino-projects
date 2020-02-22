@@ -75,10 +75,11 @@ void loop() {
         Serial.println(F(" Error reading temperature!"));
     }
     else {
+        // print temp to lcd
         lcd.print("Temp: ");
         lcd.print(event.temperature);
         lcd.print("C");
-
+        // print temp to serial out
         Serial.print(F("  Temperature: "));
         Serial.print(event.temperature);
         Serial.println(F("°C"));
