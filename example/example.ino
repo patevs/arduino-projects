@@ -95,7 +95,7 @@ void loop() {
         lcd.print("RH:    ");
         lcd.print(event.relative_humidity);
         lcd.print("%");
-        // print humidity to lcd
+        // print humidity to serial out
         Serial.print(F("  Humidity: "));
         Serial.print(event.relative_humidity);
         Serial.println(F("%"));
