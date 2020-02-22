@@ -10,7 +10,7 @@
 #include <LiquidCrystal.h>
 
 // Digital pin connected to the DHT sensor
-#define DHTPIN 9
+#define DHTPIN 13
 
 // Feather HUZZAH ESP8266 note: use pins 3, 4, 5, 12, 13 or 14 --
 // Pin 15 can work but DHT must be disconnected during program upload.
