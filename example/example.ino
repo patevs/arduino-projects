@@ -73,9 +73,12 @@ void loop() {
         Serial.println(F(" Error reading temperature!"));
     }
     else {
+        // get temperature
+        int temp = event.temperature;
         // print temp to lcd
-        lcd.print(" Temp: ");
-        lcd.print(event.temperature);
+        lcd.print("  Temp : ");
+        // lcd.print(event.temperature);
+        lcd.print(temp);
         lcd.print(" ");
         lcd.print((char)223);
         lcd.print("C");
@@ -95,7 +98,7 @@ void loop() {
         // get humidity
         int hum = event.relative_humidity;
         // print humidity to lcd
-        lcd.print(" R.H.: ");
+        lcd.print("  R.H. : ");
         lcd.print(hum);
         // lcd.print(event.relative_humidity);
         lcd.print(" %");
