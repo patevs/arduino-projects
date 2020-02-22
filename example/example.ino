@@ -29,7 +29,7 @@ void setup() {
     // set up the LCD's number of columns and rows:
     lcd.begin(16, 2);
     // Print a message to the LCD.
-    lcd.print("hello, world!");
+    // lcd.print("hello, world!");
     // Initialize dht sensor.
     dht.begin();
     Serial.println("");
@@ -75,9 +75,9 @@ void loop() {
         Serial.println(F(" Error reading temperature!"));
     }
     else {
-        lcd.print(F("Temp: "));
+        lcd.print("Temp: ");
         lcd.print(event.temperature);
-        lcd.println(F("°C"));
+        lcd.print("°C");
 
         Serial.print(F("  Temperature: "));
         Serial.print(event.temperature);
