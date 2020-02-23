@@ -59,7 +59,7 @@ void loop(void) {
     // Delay between measurements.
     delay(delayMS);
 
-        // Get temperature event and print its value.
+    // Get temperature event and print its value.
     sensors_event_t event;
     dht.temperature().getEvent(&event);
     if (isnan(event.temperature)) {
@@ -71,6 +71,8 @@ void loop(void) {
         Serial.print(F("  Temperature: "));
         Serial.print(temp);
         Serial.println(F("°C"));
+        // send temp to hc06 sensor
+        hc06.print(temp);
     }
 
     // Get humidity event and print its value.
@@ -86,18 +88,6 @@ void loop(void) {
         Serial.println(F("%"));
         Serial.println("");
     }
-
-    // voltage= analogRead(sensorPin) * (5.0 / 1023.0); // Convert digital value to voltage
-    // temperature=100*voltage; // conversion from V to °C
-
-    // Serial.print("Sensor reading = ");
-    // Serial.println(temperature); // the temperature reading
-    // Send voltage and temperature value to app
-    // HC06.print(voltage);
-    // HC06.print("x");
-    // HC06.print(temperature);
-
-    // delay(DELAY);
 
     //Write data from HC06 to Serial Monitor
     if (hc06.available()) {
