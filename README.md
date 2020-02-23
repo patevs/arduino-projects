@@ -8,6 +8,7 @@
 * [HC-06 Library](https://github.com/dennistreysa/HC-06-BT)
 * [HC-06 Example Code](https://gist.github.com/bauerjj/b422e07f74e611e4df3831678bf5ee4b)
 * [Measure Temperature](https://www.aranacorp.com/en/measure-your-home-temperature-on-your-smartphone/)
+* [Arduino and HC-06](http://www.martyncurrey.com/arduino-and-hc-06-zs-040/)
 
 [](.)
 
