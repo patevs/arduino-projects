@@ -10,6 +10,8 @@
 #include <DHT.h>
 #include <DHT_U.h>
 
+#include <LiquidCrystal.h>
+
 // CONSTANTS //
 
 // Digital pin connected to the DHT sensor
@@ -24,12 +26,23 @@ DHT_Unified dht(DHTPIN, DHTTYPE);
 
 SoftwareSerial hc06(2,3); // RX, TX
 
+// initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(12, 11, 5, 4, 6, 7);
+
 uint32_t delayMS;
 
 void setup(void) {
     //Initialize Serial Monitor
     Serial.begin(9600);
     Serial.println("ENTER AT Commands:");
+
+    // Initialize the LCD's number of columns and rows:
+    lcd.begin(16, 2);
+
+    // set the cursor to column 0, line 0
+    // (note: line 1 is the second row, since counting begins with 0):
+    lcd.setCursor(0, 0);
+    lcd.print("TEST");
 
     //Initialize Bluetooth Serial Port
     hc06.begin(9600); // start the bluetooth uart at 9600 which is its default
