@@ -42,9 +42,9 @@ void setup(void) {
 
     // Initialize dht sensor
     dht.begin();
-    // Serial.println(F(" DHT11 Humidity & Temperature Sensor"));
+    Serial.println(F(" DHT11 Humidity & Temperature Sensor"));
     // print sensor details
-    // printDhtDetails();
+    printDhtDetails();
 }
 
 void loop(void) {
@@ -52,7 +52,6 @@ void loop(void) {
     delay(delayMS);
 
     // Get temperature event and print its value.
-    /*
     sensors_event_t event;
     dht.temperature().getEvent(&event);
     if (isnan(event.temperature)) {
@@ -61,9 +60,9 @@ void loop(void) {
         // get temperature
         int temp = event.temperature;
         // print temp to serial out
-        // Serial.print(F("  Temperature: "));
-        // Serial.print(temp);
-        // Serial.println(F("°C"));
+        Serial.print(F("  Temperature: "));
+        Serial.print(temp);
+        Serial.println(F("°C"));
         // send temp to hc06 sensor
         // hc06.print(temp);
         // hc06.write(temp);
@@ -83,7 +82,7 @@ void loop(void) {
         Serial.println(F("%"));
         Serial.println("");
     }
-    */
+
     /*
     if (hc06.available()) { // check if anything in UART buffer
         hc06.write(hc06.read()); // if so, echo it back!
