@@ -36,10 +36,10 @@ void setup(void) {
     hc06.begin(9600); // start the bluetooth uart at 9600 which is its default
     // wait for voltage to stabilize
     delay(200);
-    hc06.print("AT+NAMEHC-06"); // place your name in here to configure the bluetooth name.
-                                // will require reboot for settings to take affect.
+    // hc06.print("AT+NAMEHC-06"); // place your name in here to configure the bluetooth name.
+                                   // will require reboot for settings to take affect.
     // wait for settings to take affect
-    delay(3000);
+    // delay(3000);
 
     // Initialize dht sensor
     dht.begin();
