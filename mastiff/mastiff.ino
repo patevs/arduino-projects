@@ -39,10 +39,12 @@ void setup(void) {
                                     // will require reboot for settings to take affect.
     // wait for settings to take affect
     delay(3000);
+
     // Initialize dht sensor
     dht.begin();
     Serial.println(F(" DHT11 Humidity & Temperature Sensor"));
     sensor_t sensor;
+
     // Print temperature sensor details
     dht.temperature().getSensor(&sensor);
     Serial.println(F(" -----------------------------------"));
@@ -51,6 +53,7 @@ void setup(void) {
     Serial.print  (F("  Min Value:   ")); Serial.print(sensor.min_value); Serial.println(F("°C"));
     Serial.print  (F("  Resolution:  ")); Serial.print(sensor.resolution); Serial.println(F("°C"));
     Serial.println(F(" -----------------------------------"));
+
     // Print humidity sensor details.
     dht.humidity().getSensor(&sensor);
     Serial.println(F(" Humidity Sensor"));
@@ -58,6 +61,7 @@ void setup(void) {
     Serial.print  (F("  Min Value:   ")); Serial.print(sensor.min_value); Serial.println(F("%"));
     Serial.print  (F("  Resolution:  ")); Serial.print(sensor.resolution); Serial.println(F("%"));
     Serial.println(F(" -----------------------------------"));
+
     // Set delay between sensor readings based on sensor details.
     delayMS = sensor.min_delay / 1000;
 }
