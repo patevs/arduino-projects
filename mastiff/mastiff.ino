@@ -44,27 +44,8 @@ void setup(void) {
     // Initialize dht sensor
     dht.begin();
     Serial.println(F(" DHT11 Humidity & Temperature Sensor"));
-    sensor_t sensor;
-
-    // Print temperature sensor details
-    dht.temperature().getSensor(&sensor);
-    Serial.println(F(" -----------------------------------"));
-    Serial.println(F(" Temperature Sensor"));
-    Serial.print  (F("  Max Value:   ")); Serial.print(sensor.max_value); Serial.println(F("°C"));
-    Serial.print  (F("  Min Value:   ")); Serial.print(sensor.min_value); Serial.println(F("°C"));
-    Serial.print  (F("  Resolution:  ")); Serial.print(sensor.resolution); Serial.println(F("°C"));
-    Serial.println(F(" -----------------------------------"));
-
-    // Print humidity sensor details.
-    dht.humidity().getSensor(&sensor);
-    Serial.println(F(" Humidity Sensor"));
-    Serial.print  (F("  Max Value:   ")); Serial.print(sensor.max_value); Serial.println(F("%"));
-    Serial.print  (F("  Min Value:   ")); Serial.print(sensor.min_value); Serial.println(F("%"));
-    Serial.print  (F("  Resolution:  ")); Serial.print(sensor.resolution); Serial.println(F("%"));
-    Serial.println(F(" -----------------------------------"));
-
-    // Set delay between sensor readings based on sensor details.
-    delayMS = sensor.min_delay / 1000;
+    // print sensor details
+    printDhtDetails();
 }
 
 void loop(void) {
@@ -119,6 +100,30 @@ void loop(void) {
         hc06.write("TEST!");
         hc06.write(Serial.read());
     }
+}
+
+void printDhtDetails() {
+    sensor_t sensor;
+
+    // Print temperature sensor details
+    dht.temperature().getSensor(&sensor);
+    Serial.println(F(" -----------------------------------"));
+    Serial.println(F(" Temperature Sensor"));
+    Serial.print  (F("  Max Value:   ")); Serial.print(sensor.max_value); Serial.println(F("°C"));
+    Serial.print  (F("  Min Value:   ")); Serial.print(sensor.min_value); Serial.println(F("°C"));
+    Serial.print  (F("  Resolution:  ")); Serial.print(sensor.resolution); Serial.println(F("°C"));
+    Serial.println(F(" -----------------------------------"));
+
+    // Print humidity sensor details.
+    dht.humidity().getSensor(&sensor);
+    Serial.println(F(" Humidity Sensor"));
+    Serial.print  (F("  Max Value:   ")); Serial.print(sensor.max_value); Serial.println(F("%"));
+    Serial.print  (F("  Min Value:   ")); Serial.print(sensor.min_value); Serial.println(F("%"));
+    Serial.print  (F("  Resolution:  ")); Serial.print(sensor.resolution); Serial.println(F("%"));
+    Serial.println(F(" -----------------------------------"));
+
+    // Set delay between sensor readings based on sensor details.
+    delayMS = sensor.min_delay / 1000;
 }
 
 /* EOF */
