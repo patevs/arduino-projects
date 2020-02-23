@@ -22,7 +22,7 @@
 
 DHT_Unified dht(DHTPIN, DHTTYPE);
 
-SoftwareSerial hc06(1,0); // RX, TX
+SoftwareSerial hc06(2,3); // RX, TX
 
 uint32_t delayMS;
 
