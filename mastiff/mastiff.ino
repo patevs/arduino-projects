@@ -105,6 +105,10 @@ void loop(void) {
         */
     }
 
+    if (hc06.available()) { // check if anything in UART buffer
+        hc06.write(hc06.read()); // if so, echo it back!
+    }
+
     // Write data from HC06 to Serial Monitor
     if (hc06.available()) {
         Serial.write(hc06.read());
