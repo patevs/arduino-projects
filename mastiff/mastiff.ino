@@ -27,10 +27,9 @@ SoftwareSerial hc06(2,3); // RX, TX
 uint32_t delayMS;
 
 void setup(void) {
-    pinMode(13, OUTPUT); // for LED status
     //Initialize Serial Monitor
     Serial.begin(9600);
-    // Serial.println("ENTER AT Commands:");
+    Serial.println("ENTER AT Commands:");
 
     //Initialize Bluetooth Serial Port
     hc06.begin(9600); // start the bluetooth uart at 9600 which is its default
@@ -43,9 +42,9 @@ void setup(void) {
 
     // Initialize dht sensor
     dht.begin();
-    Serial.println(F(" DHT11 Humidity & Temperature Sensor"));
+    // Serial.println(F(" DHT11 Humidity & Temperature Sensor"));
     // print sensor details
-    printDhtDetails();
+    // printDhtDetails();
 }
 
 void loop(void) {
@@ -53,6 +52,7 @@ void loop(void) {
     delay(delayMS);
 
     // Get temperature event and print its value.
+    /*
     sensors_event_t event;
     dht.temperature().getEvent(&event);
     if (isnan(event.temperature)) {
@@ -78,18 +78,19 @@ void loop(void) {
         // get humidity
         int humidity = event.relative_humidity;
         // print humidity to serial out
-        /*
         Serial.print(F("  Humidity: "));
         Serial.print(humidity);
         Serial.println(F("%"));
         Serial.println("");
-        */
     }
-
+    */
+    /*
     if (hc06.available()) { // check if anything in UART buffer
         hc06.write(hc06.read()); // if so, echo it back!
     }
+    */
 
+    /*
     // Write data from HC06 to Serial Monitor
     if (hc06.available()) {
         Serial.write(hc06.read());
@@ -97,9 +98,9 @@ void loop(void) {
 
     // Write from Serial Monitor to HC06
     if (Serial.available()) {
-        hc06.write("TEST!");
         hc06.write(Serial.read());
     }
+    */
 }
 
 void printDhtDetails() {
