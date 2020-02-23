@@ -22,7 +22,7 @@
 
 DHT_Unified dht(DHTPIN, DHTTYPE);
 
-SoftwareSerial hc06(2,3); // RX, TX
+SoftwareSerial hc06(1,0); // RX, TX
 
 uint32_t delayMS;
 
@@ -90,7 +90,6 @@ void loop(void) {
     }
     */
 
-    /*
     // Write data from HC06 to Serial Monitor
     if (hc06.available()) {
         Serial.write(hc06.read());
@@ -100,7 +99,6 @@ void loop(void) {
     if (Serial.available()) {
         hc06.write(Serial.read());
     }
-    */
 }
 
 void printDhtDetails() {
