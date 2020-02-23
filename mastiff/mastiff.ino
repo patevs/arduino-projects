@@ -20,7 +20,7 @@
 
 #define DHTTYPE DHT11
 
-DHT_Unified dht(DHTPIN, DHTTYPE)
+DHT_Unified dht(DHTPIN, DHTTYPE);
 
 SoftwareSerial hc06(2,3);
 
@@ -34,7 +34,6 @@ void setup(void) {
     hc06.begin(9600);
     // Initialize dht sensor
     dht.begin();
-    Serial.println("");
     Serial.println(F(" DHT11 Humidity & Temperature Sensor"));
     sensor_t sensor;
     // Print temperature sensor details
@@ -59,6 +58,34 @@ void setup(void) {
 void loop(void) {
     // Delay between measurements.
     delay(delayMS);
+
+        // Get temperature event and print its value.
+    sensors_event_t event;
+    dht.temperature().getEvent(&event);
+    if (isnan(event.temperature)) {
+        Serial.println(F(" Error reading temperature!"));
+    } else {
+        // get temperature
+        int temp = event.temperature;
+        // print temp to serial out
+        Serial.print(F("  Temperature: "));
+        Serial.print(temp);
+        Serial.println(F("°C"));
+    }
+
+    // Get humidity event and print its value.
+    dht.humidity().getEvent(&event);
+    if (isnan(event.relative_humidity)) {
+        Serial.println(F(" Error reading humidity!"));
+    } else {
+        // get humidity
+        int humidity = event.relative_humidity;
+        // print humidity to serial out
+        Serial.print(F("  Humidity: "));
+        Serial.print(humidity);
+        Serial.println(F("%"));
+        Serial.println("");
+    }
 
     // voltage= analogRead(sensorPin) * (5.0 / 1023.0); // Convert digital value to voltage
     // temperature=100*voltage; // conversion from V to °C
