@@ -1,5 +1,5 @@
 /*
- *  hc06.ino
+ *  hc06-configure.ino
  */
 
 #include <SoftwareSerial.h>
