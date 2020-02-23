@@ -22,16 +22,23 @@
 
 DHT_Unified dht(DHTPIN, DHTTYPE);
 
-SoftwareSerial hc06(2,3);
+SoftwareSerial hc06(2,3); // RX, TX
 
 uint32_t delayMS;
 
 void setup(void) {
+    pinMode(13, OUTPUT); // for LED status
     //Initialize Serial Monitor
     Serial.begin(9600);
     // Serial.println("ENTER AT Commands:");
     //Initialize Bluetooth Serial Port
-    hc06.begin(9600);
+    hc06.begin(9600); // start the bluetooth uart at 9600 which is its default
+    // wait for voltage to stabilize
+    delay(200);
+    hc06.print("AT+NAMEmcuhq.com"); // place your name in here to configure the bluetooth name.
+                                    // will require reboot for settings to take affect.
+    // wait for settings to take affect
+    delay(3000);
     // Initialize dht sensor
     dht.begin();
     Serial.println(F(" DHT11 Humidity & Temperature Sensor"));
