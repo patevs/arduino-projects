@@ -39,11 +39,6 @@ void setup(void) {
     // Initialize the LCD's number of columns and rows:
     lcd.begin(16, 2);
 
-    // set the cursor to column 0, line 0
-    // (note: line 1 is the second row, since counting begins with 0):
-    lcd.setCursor(0, 0);
-    lcd.print("TEST");
-
     //Initialize Bluetooth Serial Port
     hc06.begin(9600); // start the bluetooth uart at 9600 which is its default
     // wait for voltage to stabilize
@@ -64,6 +59,10 @@ void loop(void) {
     // Delay between measurements.
     delay(delayMS);
 
+    // set the cursor to column 0, line 0
+    // (note: line 1 is the second row, since counting begins with 0):
+    lcd.setCursor(0, 0);
+
     hc06.println(" ----------------- ");
 
     // Get temperature event and print its value.
@@ -83,8 +82,16 @@ void loop(void) {
         hc06.print(temp);
         hc06.println("°C");
         // hc06.println("");
+        // print temperature to lcd
+        lcd.print("  Temp : ");
+        // lcd.print(event.temperature);
+        lcd.print(temp);
+        lcd.print(" ");
+        lcd.print((char)223);
+        lcd.print("C");
     }
-
+    // set the cursor to column 0, line 1
+    lcd.setCursor(0, 1);
     // Get humidity event and print its value.
     dht.humidity().getEvent(&event);
     if (isnan(event.relative_humidity)) {
@@ -102,6 +109,11 @@ void loop(void) {
         hc06.print(humidity);
         hc06.println("%");
         // hc06.println("");
+        // print humidity to lcd
+        lcd.print("  R.H. : ");
+        lcd.print(humidity);
+        // lcd.print(event.relative_humidity);
+        lcd.print(" %");
     }
 
     /*
