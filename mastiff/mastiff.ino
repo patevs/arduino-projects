@@ -79,9 +79,9 @@ void loop(void) {
         // get temperature
         int temp = event.temperature;
         // print temp to serial out
-        Serial.print(F("  Temperature: "));
-        Serial.print(temp);
-        Serial.println(F("°C"));
+        // Serial.print(F("  Temperature: "));
+        // Serial.print(temp);
+        // Serial.println(F("°C"));
         // send temp to hc06 sensor
         hc06.print(temp);
     }
@@ -94,10 +94,12 @@ void loop(void) {
         // get humidity
         int humidity = event.relative_humidity;
         // print humidity to serial out
+        /*
         Serial.print(F("  Humidity: "));
         Serial.print(humidity);
         Serial.println(F("%"));
         Serial.println("");
+        */
     }
 
     //Write data from HC06 to Serial Monitor
