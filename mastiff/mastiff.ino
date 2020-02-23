@@ -51,6 +51,8 @@ void loop(void) {
     // Delay between measurements.
     delay(delayMS);
 
+    hc06.println(" ----------------- ");
+
     // Get temperature event and print its value.
     sensors_event_t event;
     dht.temperature().getEvent(&event);
@@ -59,14 +61,15 @@ void loop(void) {
     } else {
         // get temperature
         int temp = event.temperature;
-        // print temp to serial out
+        // print temperature to serial out
         Serial.print(F("  Temperature: "));
         Serial.print(temp);
         Serial.println(F("°C"));
-        // send temp to hc06 sensor
-        // hc06.print(temp);
-        // hc06.write(temp);
-        // Serial.write(hc06.read());
+        // send temperature to hc06 sensor
+        hc06.print(" Temperature: ");
+        hc06.print(temp);
+        hc06.println("°C");
+        // hc06.println("");
     }
 
     // Get humidity event and print its value.
@@ -81,6 +84,11 @@ void loop(void) {
         Serial.print(humidity);
         Serial.println(F("%"));
         Serial.println("");
+        // send humidity to hc06 sensor
+        hc06.print(" Humidity: ");
+        hc06.print(humidity);
+        hc06.println("%");
+        // hc06.println("");
     }
 
     /*
